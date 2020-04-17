@@ -3,7 +3,7 @@ import Navbar from "../../../components/common/Navbar";
 import Footer from "../../../components/common/Footer";
 import CountSummary from "../../../components/common/CountSummary";
 import CountryDataTable from "../../../components/common/CountryDataTable";
-import * as API from "../../../components/Api/GetCounts";
+import * as API from "../../../components/Api/GetGobalCounts";
 import * as Constants from "../../../components/constants/constants";
 import { connect } from "react-redux";
 import { getCountryCounts } from "../actions";
@@ -19,6 +19,19 @@ class HomePage extends React.Component {
         .fromString(response)
         .then((csvRow) => {
           this.props.getCountryCounts({ csvRow });
+        });
+    });
+
+    API.getTimeSeriesConfirmed().then((response) => {
+      const csv = require("csvtojson");
+      csv({
+        noheader: false,
+        output: "csv",
+      })
+        .fromString(response)
+        .then((csvRow) => {
+          console.log(csvRow);
+          // this.props.getTimeSeriesConfirmedCounts({ csvRow });
         });
     });
   }

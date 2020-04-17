@@ -1,4 +1,4 @@
-import * as Constants from "../../components/constants/constants";
+import * as Constants from "../constants/constants";
 import Axios from "axios";
 import * as moment from "moment";
 
@@ -40,4 +40,16 @@ export async function getRecords() {
   }
 
   return response.data;
+}
+
+export async function getTimeSeriesConfirmed() {
+  let response;
+  await Axios.get(Constants.TIMESERIES_CONFIRMED_URL)
+    .then((result) => {
+      response = result.data;
+    })
+    .catch((error) => {
+      console.log("Time-Series-Confirmed-Error: " + error);
+    });
+  return response;
 }

@@ -1,4 +1,4 @@
-export const getHomePageState = store => store.homepage;
+// export const getHomePageState = store => store.homepage;
 
 /**
  * example of a slightly more complex selector

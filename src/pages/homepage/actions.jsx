@@ -1,6 +1,6 @@
-import { GET_COUNTRY_COUNTS } from "./actionTypes";
+import { GET_GLOBAL_COUNTS } from "./actionTypes";
 
-export const getCountryCounts = (data) => ({
-  type: GET_COUNTRY_COUNTS,
-  payload: { data },
+export const getCountryCounts = (dailyData) => ({
+  type: GET_GLOBAL_COUNTS,
+  payload: { dailyData },
 });

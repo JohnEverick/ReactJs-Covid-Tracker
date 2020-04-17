@@ -1,4 +1,4 @@
-import { GET_COUNTRY_COUNTS } from "./actionTypes";
+import { GET_GLOBAL_COUNTS } from "./actionTypes";
 import * as moment from "moment";
 
 const initialState = {
@@ -12,9 +12,9 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case GET_COUNTRY_COUNTS: {
-      const { data } = action.payload;
-      let rawData = data.csvRow.map((record) => {
+    case GET_GLOBAL_COUNTS: {
+      const { dailyData } = action.payload;
+      let rawData = dailyData.csvRow.map((record) => {
         return {
           country: record[3],
           lastUpdate: moment(record[4]).format("MMMM DD, YYYY h:mm a"),
@@ -63,6 +63,7 @@ export default function (state = initialState, action) {
         totalActive,
       };
     }
+
     default:
       return state;
   }
